@@ -1,17 +1,22 @@
 #include <stdio.h>
 #include "helpers/vector.h"
-int main(){
-    //Nimmt Ints an
-    struct vector* vec = vector_create(sizeof(int));
-    int x=40;
-    vector_push(vec, &x);
-    x=29;
-    vector_push(vec, &x);
+#include "compiler.h"
+int main()
+{
 
-    vector_set_peek_pointer(vec, 0);
-    int* ptr = vector_peek(vec);
-    
-    printf("%i\n", *ptr);
+    int res = compile_file("./test.c", "test.o", 0);
 
+    if(res == COMPILER_FILE_COMPILED_OK)
+    {
+        printf("Compilation ok...\n");
+    } 
+    else if(res== COMPILER_FAILED_WITH_ERRORS)
+    {
+        printf("Compilation failed...\n");
+    } 
+    else 
+    {
+        printf("Unknown response for compilation \n");
+    }
     return 0;
 }
