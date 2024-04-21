@@ -1,6 +1,8 @@
+#Object Files
 OBJECTS=./build/compiler.o ./build/cprocess.o ./build/helpers/vector.o ./build/helpers/buffer.o
 INCLUDES= -I./
 
+#Rule states: 
 all: ${OBJECTS}
 	gcc main.c ${INCLUDES} ${OBJECTS} -g -o ./main
 
